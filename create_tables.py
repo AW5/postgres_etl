@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Aug 13 00:47:27 2019
-
-@author: anthonywa
-"""
-
 import psycopg2
 from sql_queries import create_table_queries, drop_table_queries
 
@@ -29,13 +21,13 @@ def create_database():
     
     return cur, conn
 
-
+#function to run all drop table requries before table creation
 def drop_tables(cur, conn):
     for query in drop_table_queries:
         cur.execute(query)
         conn.commit()
 
-
+#function to run all create table requries
 def create_tables(cur, conn):
     for query in create_table_queries:
         cur.execute(query)
