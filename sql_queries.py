@@ -49,7 +49,7 @@ VALUES (%s,%s,%s,%s,%s) ON CONFLICT (artist_id) DO UPDATE SET location=EXCLUDED.
 
 
 time_table_insert = ("""INSERT INTO time(start_time, hour, day, week, month, year, weekday) 
-VALUES (%s,%s,%s,%s,%s,%s,%s)
+VALUES (%s,%s,%s,%s,%s,%s,%s) ON CONFLICT (start_time) DO NOTHING
 """)
 
 # FIND SONGS

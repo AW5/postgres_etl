@@ -14,6 +14,17 @@ from sql_queries import *
 
 
 def process_song_file(cur, filepath):
+
+"""
+    This procedure processes a song file whose file path has been provided as an argument.
+    It extracts the song information in order to store it into the songs table.
+    Then it extracts the artist information in order to store it into the artists table.
+
+    INPUTS: 
+    * cur the cursor variable
+    * filepath the file path to the song file
+
+"""
     # open song file
     df = pd.read_json(filepath, lines=True)
 
@@ -32,6 +43,18 @@ def process_song_file(cur, filepath):
 
 
 def process_log_file(cur, filepath):
+
+
+"""
+    This procedure processes a songplay log file whose file path has been provided as an argument.
+    It extracts the songs play activity information in order to store it into the songs table.
+    Then it extracts the artist information in order to store it into the artists table.
+
+    INPUTS: 
+    * cur the cursor variable
+    * filepath the file path to the songplay log file
+
+"""
     # open log file
     df = pd.read_json(filepath,lines=True)
 
@@ -74,6 +97,20 @@ def process_log_file(cur, filepath):
 
 
 def process_data(cur, conn, filepath, func):
+
+"""
+    This procedure processes all data files under one path, the file path has been provided as an argument.
+    It iterates through all the files in the folder and combine the data frame.
+    
+
+    INPUTS: 
+    * cur the cursor variable
+    * conn the connection created previously 
+    * filepath the file path to the songplay log file
+    * func is the process function used to process data
+
+"""
+
     # get all files matching extension from directory
     all_files = []
     for root, dirs, files in os.walk(filepath):
